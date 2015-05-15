@@ -11,11 +11,26 @@ package fr.sauget.test;
  */
 public class ProjectEurler8 {
     
+    final static int LONGUEUR = 13;
     
     
-    
-    
-    
+    /**
+     * Découpe une chaine en x digit et en retoure le produit
+     * @param chaine
+     * @return 
+     */
+    private static long product(String chaine)
+    {
+        long val = 1;
+        
+        
+        for (int i = 0; i < chaine.length(); i++ ){
+            val *= Integer.valueOf(chaine.substring(i, i+1));
+        }
+            
+        
+        return val;
+    }
     
      public static void main(String[] args)
      {
@@ -25,15 +40,41 @@ public class ProjectEurler8 {
          
          
          int start = 0; 
-         int end = 13;
+         int end = LONGUEUR;
+         long last =0;
+         long max = 0;
+         String chaineMax = "";
+         long current;
          
          
          while (end <= chaine.length()){
-             System.out.println(chaine.substring(start, end));
+             String sub = chaine.substring(start, end);
+             //System.out.println(sub);
+             
+             
+             if (! sub.contains("0"))
+             {
+                 if (last != 0 && false){
+                     
+                 }else{
+                     current = product(sub);
+                     
+                     
+                     if (current > max){
+                         max = current;
+                         chaineMax = sub;
+                     }
+                 }
+             }
+             
              start ++;
              end++;
+             
          }
          
+         
+         System.out.println(max + " "+ chaineMax);
+                  
          
      }
     
